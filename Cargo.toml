@@ -1,6 +1,7 @@
 [package]
 name = "polynomical"
 description = "tiny polynomial manipulation library"
+repository = "https://github.com/uncoordinated-assault/polynomical"
 authors = ["uncoordinated-assault"]
 version = "1.0.0"
 edition = "2021"
