@@ -30,7 +30,7 @@ impl<T> Operable for T where
 
 #[macro_export]
 macro_rules! polynomial {
-    ((x $l0:literal)$((x $li:literal))*) => {
+    ((x $(+)? $l0:literal)$((x $(+)? $li:literal))*) => {
         {
 
            let p0 = Polynomial::new(&[monomial!(x), monomial!($l0)]);
@@ -474,7 +474,7 @@ mod tests {
         let p1 = polynomial!((x - 5)(x - 8)(x - 0));
 
         let p3 = p0 * p1;
-        // x^6 − 19x^5 + 129x^4 − 389x^3 + 518x^2 − 240x
+
         assert_eq!(
             &[
                 monomial!(x ^ 6),
@@ -490,7 +490,7 @@ mod tests {
 
     #[test]
     fn mul_polynomial1() {
-        let p0: Polynomial<isize> = polynomial!((x - 192)(x  31)(x - 9)(x - 12));
+        let p0: Polynomial<isize> = polynomial!((x - 192)(x + 31)(x - 9)(x - 12));
         let p1 = polynomial!((x - 14)(x - 46)(x - 2)(x - 7)(x - 0));
 
         let p3 = p0 * p1;
@@ -528,7 +528,7 @@ mod tests {
 
     #[test]
     fn root_polynomial1() {
-        let p0: Polynomial<isize> = polynomial!((x - 9)(x - 6)(x - 4)(x 2));
+        let p0: Polynomial<isize> = polynomial!((x - 9)(x - 6)(x - 4)(x + 2));
 
         assert_eq!(
             &[
